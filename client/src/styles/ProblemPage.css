@@ -7,7 +7,8 @@
 
 .top-bar {
   display: flex;
-  justify-content: flex-end;  
+  justify-content: flex-end; /* ← updated for left and right layout */
+  align-items: center;
   background-color: #343a40;
   color: white;
   padding: 15px 30px;
@@ -17,6 +18,22 @@
 
 .welcome-text {
   font-weight: normal;
+}
+
+.logout-button {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  font-size: 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-left: 20px;
+}
+
+.logout-button:hover {
+  background-color: #d93030;
 }
 
 .problem-page {

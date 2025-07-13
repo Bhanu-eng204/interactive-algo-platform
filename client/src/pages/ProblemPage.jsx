@@ -15,28 +15,53 @@ const ProblemPage = () => {
 
   const handleSubmit = () => {
     const trimmedCode = code.replace(/\s/g, '');
-    const isCorrect = trimmedCode.includes('foriinrange') && trimmedCode.includes('arr[j]>arr[j+1]');
+    const isCorrect =
+      trimmedCode.includes('foriinrange') &&
+      trimmedCode.includes('arr[j]>arr[j+1]');
 
     if (isCorrect) {
-      setFeedback({ type: 'success', message: '✅ Well done! Your code looks correct.' });
+      setFeedback({
+        type: 'success',
+        message: '✅ Well done! Your code looks correct.',
+      });
     } else {
-      setFeedback({ type: 'error', message: '⚠️ Almost there! Try again or use the hint.' });
+      setFeedback({
+        type: 'error',
+        message: '⚠️ Almost there! Try again or use the hint.',
+      });
     }
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem('username');
+    window.location.href = '/'; // Adjust this route if you have a login route
   };
 
   return (
     <div className="problem-page-wrapper">
       <div className="top-bar">
-        <span className="welcome-text">Welcome, {username}</span>
+        <div className="top-bar-right">
+          <span className="welcome-text">Welcome, {username}</span>
+          <button className="logout-button" onClick={handleLogout}>
+            Logout
+          </button>
+        </div>
       </div>
 
       <div className="problem-page">
         <div className="problem-left">
           <h2>Bubble Sort</h2>
           <p>Write a Python function to perform bubble sort on a given list.</p>
-          <p><strong>Function Signature:</strong> <code>def bubble_sort(arr):</code></p>
-          <p><strong>Example Input:</strong> [5, 1, 4, 2, 8]</p>
-          <p><strong>Expected Output:</strong> [1, 2, 4, 5, 8]</p>
+          <p>
+            <strong>Function Signature:</strong>{' '}
+            <code>def bubble_sort(arr):</code>
+          </p>
+          <p>
+            <strong>Example Input:</strong> [5, 1, 4, 2, 8]
+          </p>
+          <p>
+            <strong>Expected Output:</strong> [1, 2, 4, 5, 8]
+          </p>
 
           <div className="problem-buttons">
             <button onClick={() => setShowHint(!showHint)}>
@@ -57,7 +82,7 @@ const ProblemPage = () => {
             <div className="solution-box">
               Solution:
               <pre>
-{`def bubble_sort(arr):
+                {`def bubble_sort(arr):
     n = len(arr)
     for i in range(n):
         for j in range(0, n - i - 1):
