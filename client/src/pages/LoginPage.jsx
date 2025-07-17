@@ -21,10 +21,11 @@ function LoginPage() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setError('');
-
+        
+        const baseURL = import.meta.env.VITE_API_BASE_URL;
         const url = isRegister
-            ? 'http://localhost:5000/api/auth/register'
-            : 'http://localhost:5000/api/auth/login';
+          ? `${baseURL}/api/auth/register`
+          : `${baseURL}/api/auth/login`;
 
         const payload = isRegister
             ? form
